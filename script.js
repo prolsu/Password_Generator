@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var userSelection = "";
 
 // Write password to the #password input
 function writePassword() {
@@ -7,6 +8,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+  userSelection = "";
 
 }
 
@@ -15,9 +17,7 @@ generateBtn.addEventListener("click", writePassword);
 
 var userInput;
 var pwLength;
-var smallCase;
-var upper;
-var specialChar;
+
 
 function generatePassword() {
     
@@ -25,7 +25,7 @@ function generatePassword() {
 
             userInput = prompt("How many characters do you need? Min:8 Max:128 ");
             pwLength = parseInt(userInput); 
-            
+           
             if (pwLength/1 !== pwLength) {
                 alert("Please enter a number!")
             }
@@ -43,15 +43,44 @@ function generatePassword() {
         }    console.log(pwLength);
 
         var smallCase = confirm("Add small case?");
+        console.log("User's smallcase choice: " + smallCase);
+
         var upperCase = confirm("Add upper case?");
-        var specialChar = confirm("Add special characters?");
+        console.log("User's uppercase choice: " + upperCase);
+
+        var numberCase = confirm("Add numbers?");
+        console.log("User's numbers choice: " + numberCase);
+
+        var specialCase = confirm("Add special characters?");
+        console.log("User's special characters choice: " + specialCase);
 
         
+        var smallCharset = "abcdefghijklmnopqrstuvwxyz";
+        var upperCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var numberCharset = "0123456789";
+        var specialCharset = "! '()*+,-./:;<=>?@[\]^_`{|}~";
+       
 
-        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 !'()*+,-./:;<=>?@[\]^_`{|}~";
+        if (smallCase == true) {
+            userSelection += smallCharset;
+        }   
+        if (upperCase == true) {
+            userSelection += upperCharset;
+        }
+        if (numberCase == true) {
+            userSelection += numberCharset;
+        }
+        if (specialCase == true) {
+            userSelection += specialCharset;
+        }
+        
+               
+        //console.log(userSelection);
+        charset = userSelection;
         returnVal = "";
     for (var i = 0, n = charset.length; i < pwLength; ++i) {
         returnVal += charset.charAt(Math.floor(Math.random() * n));
     }
     return returnVal;
-} //console.log(generatePassword());
+    
+} 
