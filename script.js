@@ -13,25 +13,45 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+var userInput;
+var pwLength;
+var smallCase;
+var upper;
+var specialChar;
 
-// brainstorming code
+function generatePassword() {
+    
+        while (userInput !== null ) {
 
-var special = [" ", "!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ",", "<", "=", ">", "?", "@", "^", "_", "`", "{", "|", "}", "~"];
+            userInput = prompt("How many characters do you need? Min:8 Max:128 ");
+            pwLength = parseInt(userInput); 
+            
+            if (pwLength/1 !== pwLength) {
+                alert("Please enter a number!")
+            }
+                
+            else if (pwLength < 8 ) {
+                alert("Please enter a number greater than 8 and less than 128");
+            }
+            else if (pwLength > 128){
+                alert("Please enter a number lesser than 128 but greater than 8");
+            }
+            
+            else {
+                break;
+            }
+        }    console.log(pwLength);
 
+        var smallCase = confirm("Add small case?");
+        var upperCase = confirm("Add upper case?");
+        var specialChar = confirm("Add special characters?");
 
-//Next function returns full alphabet and stores it in variable "lowercase"
-  //https://stackoverflow.com/questions/24597634/how-to-generate-an-array-of-alphabet-in-jquery
+        
 
-function genCharArray(charA, charZ) {
-  var a = [], i = charA.charCodeAt(0), j = charZ.charCodeAt(0);
-  for ( ; i <= j; ++i) {
-      a.push(String.fromCharCode(i));
-  }
-  return a;
-}
-var lowercase = genCharArray('a', 'z'); 
-console.log(lowercase); // ["a", ..., "z"]
-
-// next variable "uppercase" takes the array from "lowercase" and returns alphabet in uppercase
-var uppercase = lowercase.map(lowercase => lowercase.toUpperCase()); 
-console.log(uppercase); // ["A",....,"Z"]
+        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 !'()*+,-./:;<=>?@[\]^_`{|}~";
+        returnVal = "";
+    for (var i = 0, n = charset.length; i < pwLength; ++i) {
+        returnVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+    return returnVal;
+} //console.log(generatePassword());
