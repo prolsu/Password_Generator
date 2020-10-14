@@ -121,20 +121,38 @@ button[disabled] {
   overflow: hidden;
 }
 
-@media (max-width: 690px) {
+@media (max-width: 813px) {
   .btn {
-    font-size: 1rem;
+    font-size: 1.25rem;
     margin: 16px 0px 0px 0px;
     padding: 10px 15px;
   }
 
   #password {
+    font-size: 1.25rem;
+    margin-bottom: -25px;
+  }
+
+  h1,
+  h2 {
+    margin: 2px auto 2px;
+  }
+    
+}
+
+@media (max-width: 450px) {
+  .btn {
     font-size: 1rem;
+  }
+
+  body {
+    margin-top: 25%;
   }
 }
 
-@media (max-width: 500px) {
-  .btn {
-    font-size: 0.8rem;
+/*@media only screen and (max-width: 600px) {
+  body {
+    background-color: ;
   }
-}
+
+}*/
