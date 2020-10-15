@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var generateBtnquick = document.querySelector("#generateQuick");
 var userSelection = "";
 var userInput;
 var pwLength;
@@ -13,7 +14,7 @@ function generatePassword() {
         var numberCharset = "0123456789";
         var specialCharset = "! '()*+,-./:;<=>?@[\]^_`{|}~";
         //offer user to include all option for a quicker result!
-        var allFour = confirm("Include all opctions: lowercase, uppercase, numbers, and special characters?");
+        var allFour = confirm("Include all options: lowercase, uppercase, numbers, and special characters?");
         if (allFour == true){
             userSelection = smallCharset + upperCharset + numberCharset + specialCharset;
             console.log(userSelection);
@@ -75,13 +76,34 @@ function generatePassword() {
     }console.log(pwLength); console.log(userSelection); console.log(returnVal);
     return returnVal;
 } 
+function generatePasswordQuick() {
+    
+    userSelection = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789! '()*+,-./:;<=>?@[\]^_`{|}~";
+    pwLength = 50;
+    returnVal = "";
+    for (var i = 0, n = userSelection.length; i < pwLength; ++i) {
+        returnVal += userSelection.charAt(Math.floor(Math.random() * n));
+             
+    }console.log(pwLength); console.log(userSelection); console.log(returnVal);
+    return returnVal;
+} 
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+generateBtnquick.addEventListener("click", writePasswordQuick);
 
-// Write password to the #password input
+// output custom password..
 function writePassword() {
     var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+  
+    passwordText.value = password;
+    userSelection = "";
+}
+
+// output random quick password..
+function writePasswordQuick() {
+    var password = generatePasswordQuick();
     var passwordText = document.querySelector("#password");
   
     passwordText.value = password;

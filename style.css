@@ -42,6 +42,7 @@ header {
 
 .card h2 {
   text-align: center;
+ 
 }
 
 .card-header::after {
@@ -54,10 +55,13 @@ header {
 }
 
 .card-body {
-  min-height: 100px;
+  max-height: 200px;
+  font-size: 20px;
 }
 
+
 .card-footer {
+  margin-top: 10px;
   text-align: center;
 }
 
@@ -107,10 +111,7 @@ button[disabled] {
   border: none;
   display: block;
   width: 100%;
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 85px;
+  padding: 15px 15px 80px 15px;
   font-size: 1.2rem;
   text-align: center;
   margin-top: 10px;
@@ -122,20 +123,28 @@ button[disabled] {
 }
 
 @media (max-width: 813px) {
+
+  .card-body {
+    max-height: 300px;
+  }
+
   .btn {
     font-size: 1.25rem;
-    margin: 16px 0px 0px 0px;
+    margin: 10px 0px 0px 0px;
     padding: 10px 15px;
   }
 
+  .card-body textarea {
+    height: 200px;
+  }
+
   #password {
-    font-size: 1.25rem;
-    margin-bottom: -25px;
+    font-size: 1.23rem;
   }
 
   h1,
   h2 {
-    margin: 2px auto 2px;
+    margin: 1px auto 2px;
   }
     
 }
@@ -146,13 +155,6 @@ button[disabled] {
   }
 
   body {
-    margin-top: 25%;
+    margin-top: 10%;
   }
 }
-
-/*@media only screen and (max-width: 600px) {
-  body {
-    background-color: ;
-  }
-
-}*/
